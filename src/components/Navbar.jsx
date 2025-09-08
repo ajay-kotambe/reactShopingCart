@@ -2,14 +2,15 @@ import "./Navbar.css";
 import { FaCartShopping } from "react-icons/fa6";
 import logo from "../assets/images/logo.png";
 import { NavLink } from "react-router-dom";
-
+import { useSelector } from "react-redux";
 const Navbar = () => {
+  const cart = useSelector((state) => state.cart);
   return (
     <div>
-      <div className="navbar-container">
-        <NavLink to="/" style={{ display: "block" }}>
+      <div className="flex flex-row justify-between h-35px ">
+        <NavLink to="/">
           <div>
-            <img src={logo} alt="" height="36px" />
+            <img src={logo} alt="" className="h-36px" />
           </div>
         </NavLink>
         <div>
@@ -19,6 +20,7 @@ const Navbar = () => {
 
           <NavLink to="/cart">
             <div>
+              <span>{cart.length}</span>
               <FaCartShopping />
             </div>
           </NavLink>

@@ -5,7 +5,6 @@ import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import { Toaster } from "react-hot-toast";
 
-
 function App() {
   return (
     <div className="">
@@ -16,7 +15,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/cart" element={<Cart />} />
       </Routes>
-      <Toaster/>
+      <Toaster />
     </div>
   );
 }
