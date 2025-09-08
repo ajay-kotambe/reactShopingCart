@@ -2,33 +2,33 @@ import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { addProduct, removeProduct } from "../redux/slices/CartSlice";
 
-const Product = ({ post }) => {
+const Product = ({ item }) => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
   const addToCart = () => {
-    dispatch(addProduct(post));
+    dispatch(addProduct(item));
     toast.success("Item added to cart..!");
   };
   const removeFromCart = () => {
-    dispatch(removeProduct(post.id));
+    dispatch(removeProduct(item.id));
     toast.error("Item removed from cart..!");
   };
   return (
     <div>
       <div>
-        <p>{post.title}</p>
+        <p>{item.title}</p>
       </div>
       <div>
-        <p>{post.description}</p>
+        <p>{item.description}</p>
       </div>
       <div>
-        <img src={post.image} alt="" />
+        <img src={item.image} alt="" />
       </div>
       <div>
-        <p>{post.price}</p>
+        <p>{item.price}</p>
       </div>
-      {cart.some((p) => p.id === post.id) ? (
+      {cart.some((p) => p.id === item.id) ? (
         <button onClick={removeFromCart}>Remove Item</button>
       ) : (
         <button onClick={addToCart}>Add to Cart</button>

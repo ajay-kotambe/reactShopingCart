@@ -10,14 +10,13 @@ const Navbar = () => {
       <div className="flex flex-row justify-between h-35px ">
         <NavLink to="/">
           <div>
-            <img src={logo} alt="" className="h-36px" />
+            <img src={logo} alt="logoImage" className="h-14" />
           </div>
         </NavLink>
         <div>
           <NavLink to="/">
             <h3>Home</h3>
           </NavLink>
-
           <NavLink to="/cart">
             <div>
               <span>{cart.length}</span>

@@ -7,17 +7,17 @@ import Product from "../components/Product";
 
 const Home = () => {
   const [loading, setLoading] = useState(false);
-  const [posts, setPosts] = useState([]);
+  const [items, setItems] = useState([]);
   const fetchData = async () => {
     setLoading(true);
     try {
       const res = await axios.get(API_URL);
       const data = res.data;
 
-      setPosts(data);
+      setItems(data);
     } catch (error) {
       toast.error("Error while fetching data..!");
-      setPosts([]);
+      setItems([]);
     }
     setLoading(false);
   };
@@ -29,8 +29,8 @@ const Home = () => {
     <div>
       {loading ? (
         <Spinner />
-      ) : posts.length > 0 ? (
-        posts.map((post) => <Product key={post.id} post={post} />)
+      ) : items.length > 0 ? (
+        items.map((item) => <Product key={item.id} item={item} />)
       ) : (
         <div>
           <p>No Data Found..!</p>
