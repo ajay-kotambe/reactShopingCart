@@ -15,24 +15,42 @@ const Product = ({ item }) => {
     toast.error("Item removed from cart..!");
   };
   return (
-    <div>
+    <div className="flex flex-col items-center justify-between hover:scale-110 transition duration-300 ease-in gap-3 p-4 mt-10 ml-5 rounded shadow-[0_8px_30px_rgb(0,0,0,0.12)] hover:shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)]  ">
       <div>
-        <p>{item.title}</p>
+        <p className="text-gray-700 font-semibold text-lg text-left truncate w-40 mt-1 ">
+          {item.title}
+        </p>
       </div>
       <div>
-        <p>{item.description}</p>
+        <p className="w-40 text-gray-400 font-normal text-[10px] text-left">
+          {item.description.split(" ").slice(0, 10).join(" ") + "..."}
+        </p>
       </div>
-      <div>
-        <img src={item.image} alt="" />
+      <div className="h-[180px]">
+        <img src={item.image} alt="" className="h-full w-full" />
       </div>
-      <div>
-        <p>{item.price}</p>
+      <div className="flex justify-between gap-12 mt-5">
+        <div>
+          <p className="text-green-600 font-semibold items-center w-full  ">
+            ${item.price}
+          </p>
+        </div>
+        {cart.some((p) => p.id === item.id) ? (
+          <button
+            className="text-gray-700 border-2 border-gray-700 rounded-full font-semibold text[6px] p-1 px-3 hover:bg-gray-700 hover:text-white transition duration-300  ease-in"
+            onClick={removeFromCart}
+          >
+            Remove Item
+          </button>
+        ) : (
+          <button
+            className="text-gray-700 border-2 border-gray-700 rounded-full font-semibold text[6px] p-1 px-3 hover:bg-gray-700 hover:text-white transition duration-300  ease-in"
+            onClick={addToCart}
+          >
+            Add to Cart
+          </button>
+        )}
       </div>
-      {cart.some((p) => p.id === item.id) ? (
-        <button onClick={removeFromCart}>Remove Item</button>
-      ) : (
-        <button onClick={addToCart}>Add to Cart</button>
-      )}
     </div>
   );
 };

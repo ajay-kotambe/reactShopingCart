@@ -26,13 +26,19 @@ const Home = () => {
     fetchData();
   }, []);
   return (
-    <div>
+    <div className="flex flex-col justify-center align-middle mb-2">
       {loading ? (
-        <Spinner />
+        <div className="flex flex-col justify-center align-middle h-screen w-screen">
+          <Spinner />
+        </div>
       ) : items.length > 0 ? (
-        items.map((item) => <Product key={item.id} item={item} />)
+        <div className="grid xm:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-6xl p-2 mx-auto  space-y-10 space-x-5 min-h-[80vh]">
+          {items.map((item) => (
+            <Product key={item.id} item={item} />
+          ))}
+        </div>
       ) : (
-        <div>
+        <div className="flex justify-center items-center">
           <p>No Data Found..!</p>
         </div>
       )}
