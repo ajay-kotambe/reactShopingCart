@@ -28,7 +28,7 @@ const Home = () => {
   return (
     <div className="flex flex-col justify-center align-middle mb-2">
       {loading ? (
-        <div className="flex flex-col justify-center align-middle h-screen w-screen">
+        <div className="flex justify-center align-middle h-full w-screen">
           <Spinner />
         </div>
       ) : items.length > 0 ? (
